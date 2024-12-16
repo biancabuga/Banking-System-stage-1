@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class Account {
-    private String IBAN;
+    private String iban;
     private double balance;
     private String currency;
     private String type;
@@ -23,12 +23,14 @@ public final class Account {
         return fakeTransactions;
     }
 
-    public void setFakeTransactions(List<FakeTransaction> fakeTransactions) {
+    public void setFakeTransactions(final List<FakeTransaction> fakeTransactions) {
         this.fakeTransactions = fakeTransactions;
     }
 
-    public Account(String IBAN, double balance, String currency, String type, List<Card> cards) {
-        this.IBAN = IBAN;
+    public Account(final String iban, final double balance,
+                   final String currency, final String type,
+                   final List<Card> cards) {
+        this.iban = iban;
         this.balance = balance;
         this.currency = currency;
         this.type = type;
@@ -36,18 +38,18 @@ public final class Account {
     }
 
     public String getIBAN() {
-        return IBAN;
+        return iban;
     }
 
-    public void setIBAN(String IBAN) {
-        this.IBAN = IBAN;
+    public void setIBAN(final String ibanul) {
+        this.iban = ibanul;
     }
 
     public double getBalance() {
         return balance;
     }
 
-    public void setBalance(double balance) {
+    public void setBalance(final double balance) {
         this.balance = balance;
     }
 
@@ -55,7 +57,7 @@ public final class Account {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(final String currency) {
         this.currency = currency;
     }
 
@@ -63,7 +65,7 @@ public final class Account {
         return type;
     }
 
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
@@ -71,26 +73,36 @@ public final class Account {
         return cards;
     }
 
-    public void setCards(List<Card> cards) {
+    public void setCards(final List<Card> cards) {
         this.cards = cards;
     }
+
+    /**
+     * metoda pentru afisare
+     * @return
+     */
     public ObjectNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode accountNode = mapper.createObjectNode();
-        accountNode.put("IBAN", IBAN);
+        accountNode.put("IBAN", iban);
         accountNode.put("balance", balance);
         accountNode.put("currency", currency);
         accountNode.put("type", type);
 
         ArrayNode cardsNode = mapper.createArrayNode();
-        for(Card card : cards) {
+        for (Card card : cards) {
             cardsNode.add(card.toJson());
         }
         accountNode.set("cards", cardsNode);
         return accountNode;
     }
-    public void addCard(Card card) {
-        if(cards == null) {
+
+    /**
+     * metoda pentru a adauga un card la un cont
+     * @param card
+     */
+    public void addCard(final Card card) {
+        if (cards == null) {
             cards = new ArrayList<>();
         }
         cards.add(card);
@@ -100,17 +112,29 @@ public final class Account {
         return transactions;
     }
 
-    public void setTransactions(List<Transaction> transactions) {
+    public void setTransactions(final List<Transaction> transactions) {
         this.transactions = transactions;
     }
-    public void addTransaction(Transaction transaction) {
-        if(transaction == null) {
+
+    /**
+     * metoda pentru a adauga o tranzactie la tranzactiile contului
+     * @param transaction
+     */
+    public void addTransaction(final Transaction transaction) {
+        if (transaction == null) {
             transactions.add(transaction);
         }
         transactions.add(transaction);
     }
 
-    public void addFakeTransaction(FakeTransaction fakeTransaction) {
+    /**
+     * metoda pentru a adauga o tranzactie falsa
+     * (pe care nu dorim s-o printam
+     * in PrintTransactions
+     * dar este tot o tranzactie)
+     * @param fakeTransaction
+     */
+    public void addFakeTransaction(final FakeTransaction fakeTransaction) {
         fakeTransactions.add(fakeTransaction);
     }
 
@@ -118,7 +142,7 @@ public final class Account {
         return interestRate;
     }
 
-    public void setInterestRate(double interestRate) {
+    public void setInterestRate(final double interestRate) {
         this.interestRate = interestRate;
     }
 
@@ -126,7 +150,7 @@ public final class Account {
         return minBalance;
     }
 
-    public void setMinBalance(double minBalance) {
+    public void setMinBalance(final double minBalance) {
         this.minBalance = minBalance;
     }
 
@@ -134,7 +158,7 @@ public final class Account {
         return alias;
     }
 
-    public void setAlias(String alias) {
+    public void setAlias(final String alias) {
         this.alias = alias;
     }
 }

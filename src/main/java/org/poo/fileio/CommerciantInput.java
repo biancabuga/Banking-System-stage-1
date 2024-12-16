@@ -16,7 +16,7 @@ public final class CommerciantInput {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(final int id) {
         this.id = id;
     }
 
@@ -24,7 +24,7 @@ public final class CommerciantInput {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -32,7 +32,7 @@ public final class CommerciantInput {
         return commerciants;
     }
 
-    public void setCommerciants(List<String> commerciants) {
+    public void setCommerciants(final List<String> commerciants) {
         this.commerciants = commerciants;
     }
 }

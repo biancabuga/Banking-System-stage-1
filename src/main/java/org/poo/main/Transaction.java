@@ -5,7 +5,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import java.util.List;
 
-public class Transaction implements JsonOutput{
+public class Transaction implements JsonOutput {
     private int timestamp;
     private String description;
     private String senderIBAN;
@@ -18,117 +18,154 @@ public class Transaction implements JsonOutput{
     private double amountToPay;
     private String commerciant;
     private String currency;
-    List<String> accountsToSplit;
+    private List<String> accountsToSplit;
 
-    public List<String> getAccountsToSplit() {
+    public final List<String> getAccountsToSplit() {
+        /**
+         * getter pentru conturile care impart plata
+         */
         return accountsToSplit;
     }
 
-    public void setAccountsToSplit(List<String> accountsToSplit) {
+    public final void setAccountsToSplit(final List<String> accountsToSplit) {
+        /**
+         * setter pentru conturile care impart plata
+         */
         this.accountsToSplit = accountsToSplit;
     }
 
-    public String getCurrency() {
+    public final String getCurrency() {
+        /**
+         * getter pentru moneda curenta a contului
+         */
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public final void setCurrency(final String currency) {
+        /**
+         * setter pentru moneda curenta a contului
+         */
         this.currency = currency;
     }
 
-    public String getCommerciant() {
+    public final String getCommerciant() {
+        /**
+         * getter pentru comerciantul catre care facem plata
+         */
         return commerciant;
     }
 
-    public void setCommerciant(String commerciant) {
+    public final void setCommerciant(final String commerciant) {
+        /**
+         * setter pentru comerciantul catre care facem plata
+         */
         this.commerciant = commerciant;
     }
 
-    public double getAmountToPay() {
+    public final double getAmountToPay() {
+        /**
+         * getter pentru suma de plata
+         */
         return amountToPay;
     }
 
-    public void setAmountToPay(double amountToPay) {
+    public final void setAmountToPay(final double amountToPay) {
+        /**
+         * setter pentru suma de plata
+         */
         this.amountToPay = amountToPay;
     }
 
-    public String getAccount() {
+    public final String getAccount() {
+        /**
+         * getter pentru contul care face plata
+         */
         return account;
     }
 
-    public void setAccount(String account) {
+    public final void setAccount(final String account) {
+        /**
+         * setter pentru contul care face plata
+         */
         this.account = account;
     }
 
-    public String getCardNumber() {
+    public final String getCardNumber() {
+        /**
+         * getter pentru numarul de card
+         */
         return cardNumber;
     }
 
-    public void setCardNumber(String cardNumber) {
+    public final void setCardNumber(final String cardNumber) {
+        /**
+         * setter pentru numarul de card
+         */
         this.cardNumber = cardNumber;
     }
 
-    public String getCardHolder() {
+    public final String getCardHolder() {
         return cardHolder;
     }
 
-    public void setCardHolder(String cardHolder) {
+    public final void setCardHolder(final String cardHolder) {
         this.cardHolder = cardHolder;
     }
 
-    public int getTimestamp() {
+    public final int getTimestamp() {
         return timestamp;
     }
 
-    public void setTimestamp(int timestamp) {
+    public final void setTimestamp(final int timestamp) {
         this.timestamp = timestamp;
     }
 
-    public String getDescription() {
+    public final String getDescription() {
         return description;
     }
 
-    public void setDescription(String description) {
+    public final void setDescription(final String description) {
         this.description = description;
     }
 
-    public String getSenderIBAN() {
+    public final String getSenderIBAN() {
         return senderIBAN;
     }
 
-    public void setSenderIBAN(String senderIBAN) {
+    public final void setSenderIBAN(final String senderIBAN) {
         this.senderIBAN = senderIBAN;
     }
 
-    public String getReceiverIBAN() {
+    public final String getReceiverIBAN() {
         return receiverIBAN;
     }
 
-    public void setReceiverIBAN(String receiverIBAN) {
+    public final void setReceiverIBAN(final String receiverIBAN) {
         this.receiverIBAN = receiverIBAN;
     }
 
-    public String getAmount() {
+    public final String getAmount() {
         return amount;
     }
 
-    public void setAmount(String amount) {
+    public final void setAmount(final String amount) {
         this.amount = amount;
     }
 
-    public String getTransferType() {
+    public final String getTransferType() {
         return transferType;
     }
 
-    public void setTransferType(String transferType) {
+    public final void setTransferType(final String transferType) {
         this.transferType = transferType;
     }
 
-    public Transaction(String transferType){
+    public Transaction(final String transferType) {
         this.transferType = transferType;
     }
 
-    public Transaction(int timestamp, String description, String senderIBAN, String receiverIBAN, String amount, String transferType) {
+    public Transaction(final int timestamp, final String description, final String senderIBAN,
+                       final String receiverIBAN, final String amount, final String transferType) {
         this.timestamp = timestamp;
         this.description = description;
         this.senderIBAN = senderIBAN;
@@ -137,7 +174,9 @@ public class Transaction implements JsonOutput{
         this.transferType = transferType;
     }
 
-    public Transaction(int timestamp, String description, String account, String cardNumber, String cardHolder, String transferType, String amount) {
+    public Transaction(final int timestamp, final String description, final String account,
+                       final String cardNumber, final String cardHolder,
+                       final String transferType, final String amount) {
         this.timestamp = timestamp;
         this.description = description;
         this.account = account;
@@ -146,7 +185,8 @@ public class Transaction implements JsonOutput{
         this.transferType = transferType;
     }
 
-    public Transaction(int timestamp, String description, String commerciant, double amountToPay, String transferType) {
+    public Transaction(final int timestamp, final String description, final String commerciant,
+                       final double amountToPay, final String transferType) {
         this.timestamp = timestamp;
         this.description = description;
         this.commerciant = commerciant;
@@ -154,28 +194,31 @@ public class Transaction implements JsonOutput{
         this.transferType = transferType;
     }
 
-    public Transaction(int timestamp, String description, String transferType) {
+    public Transaction(final int timestamp, final String description, final String transferType) {
         this.timestamp = timestamp;
         this.description = description;
         this.transferType = transferType;
     }
 
-    public Transaction(int timestamp, String description) {
+    public Transaction(final int timestamp, final String description) {
         this.timestamp = timestamp;
         this.description = description;
     }
 
-    public Transaction(int timestamp, String description, List<String> AccountsForSplit, String currency, double amountToPay, String transferType) {
+    public Transaction(final int timestamp, final String description,
+                       final List<String> accountsForSplit,
+                       final String currency, final double amountToPay,
+                       final String transferType) {
         this.timestamp = timestamp;
         this.description = description;
-        this.accountsToSplit = AccountsForSplit;
+        this.accountsToSplit = accountsForSplit;
         this.currency = currency;
         this.amountToPay = amountToPay;
         this.transferType = transferType;
     }
 
     @Override
-    public ObjectNode toJson() {
+    public final ObjectNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode transactionNode = mapper.createObjectNode();
         transactionNode.put("timestamp", timestamp);

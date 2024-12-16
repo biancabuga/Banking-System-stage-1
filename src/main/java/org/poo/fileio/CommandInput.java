@@ -31,7 +31,7 @@ public final class CommandInput {
         return command;
     }
 
-    public void setCommand(String command) {
+    public void setCommand(final String command) {
         this.command = command;
     }
 
@@ -39,7 +39,7 @@ public final class CommandInput {
         return email;
     }
 
-    public void setEmail(String email) {
+    public void setEmail(final String email) {
         this.email = email;
     }
 
@@ -47,7 +47,7 @@ public final class CommandInput {
         return account;
     }
 
-    public void setAccount(String account) {
+    public void setAccount(final String account) {
         this.account = account;
     }
 
@@ -55,7 +55,7 @@ public final class CommandInput {
         return currency;
     }
 
-    public void setCurrency(String currency) {
+    public void setCurrency(final String currency) {
         this.currency = currency;
     }
 
@@ -63,7 +63,7 @@ public final class CommandInput {
         return amount;
     }
 
-    public void setAmount(double amount) {
+    public void setAmount(final double amount) {
         this.amount = amount;
     }
 
@@ -71,7 +71,7 @@ public final class CommandInput {
         return minBalance;
     }
 
-    public void setMinBalance(double minBalance) {
+    public void setMinBalance(final double minBalance) {
         this.minBalance = minBalance;
     }
 
@@ -79,7 +79,7 @@ public final class CommandInput {
         return target;
     }
 
-    public void setTarget(String target) {
+    public void setTarget(final String target) {
         this.target = target;
     }
 
@@ -87,7 +87,7 @@ public final class CommandInput {
         return description;
     }
 
-    public void setDescription(String description) {
+    public void setDescription(final String description) {
         this.description = description;
     }
 
@@ -95,7 +95,7 @@ public final class CommandInput {
         return cardNumber;
     }
 
-    public void setCardNumber(String cardNumber) {
+    public void setCardNumber(final String cardNumber) {
         this.cardNumber = cardNumber;
     }
 
@@ -103,7 +103,7 @@ public final class CommandInput {
         return commerciant;
     }
 
-    public void setCommerciant(String commerciant) {
+    public void setCommerciant(final String commerciant) {
         this.commerciant = commerciant;
     }
 
@@ -111,7 +111,7 @@ public final class CommandInput {
         return timestamp;
     }
 
-    public void setTimestamp(int timestamp) {
+    public void setTimestamp(final int timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -119,7 +119,7 @@ public final class CommandInput {
         return startTimestamp;
     }
 
-    public void setStartTimestamp(int startTimestamp) {
+    public void setStartTimestamp(final int startTimestamp) {
         this.startTimestamp = startTimestamp;
     }
 
@@ -127,7 +127,7 @@ public final class CommandInput {
         return endTimestamp;
     }
 
-    public void setEndTimestamp(int endTimestamp) {
+    public void setEndTimestamp(final int endTimestamp) {
         this.endTimestamp = endTimestamp;
     }
 
@@ -135,7 +135,7 @@ public final class CommandInput {
         return receiver;
     }
 
-    public void setReceiver(String receiver) {
+    public void setReceiver(final String receiver) {
         this.receiver = receiver;
     }
 
@@ -143,7 +143,7 @@ public final class CommandInput {
         return alias;
     }
 
-    public void setAlias(String alias) {
+    public void setAlias(final String alias) {
         this.alias = alias;
     }
 
@@ -151,7 +151,7 @@ public final class CommandInput {
         return accountType;
     }
 
-    public void setAccountType(String accountType) {
+    public void setAccountType(final String accountType) {
         this.accountType = accountType;
     }
 
@@ -159,7 +159,7 @@ public final class CommandInput {
         return interestRate;
     }
 
-    public void setInterestRate(double interestRate) {
+    public void setInterestRate(final double interestRate) {
         this.interestRate = interestRate;
     }
 
@@ -167,7 +167,7 @@ public final class CommandInput {
         return accounts;
     }
 
-    public void setAccounts(List<String> accounts) {
+    public void setAccounts(final List<String> accounts) {
         this.accounts = accounts;
     }
 }

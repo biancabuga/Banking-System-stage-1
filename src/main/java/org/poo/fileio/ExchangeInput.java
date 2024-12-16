@@ -15,7 +15,7 @@ public final class ExchangeInput {
         return from;
     }
 
-    public void setFrom(String from) {
+    public void setFrom(final String from) {
         this.from = from;
     }
 
@@ -23,7 +23,7 @@ public final class ExchangeInput {
         return to;
     }
 
-    public void setTo(String to) {
+    public void setTo(final String to) {
         this.to = to;
     }
 
@@ -31,7 +31,7 @@ public final class ExchangeInput {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(final double rate) {
         this.rate = rate;
     }
 
@@ -39,7 +39,7 @@ public final class ExchangeInput {
         return timestamp;
     }
 
-    public void setTimestamp(int timestamp) {
+    public void setTimestamp(final int timestamp) {
         this.timestamp = timestamp;
     }
 }

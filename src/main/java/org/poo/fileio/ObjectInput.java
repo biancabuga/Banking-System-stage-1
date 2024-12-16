@@ -15,7 +15,7 @@ public final class ObjectInput {
         return users;
     }
 
-    public void setUsers(UserInput[] users) {
+    public void setUsers(final UserInput[] users) {
         this.users = users;
     }
 
@@ -23,7 +23,7 @@ public final class ObjectInput {
         return exchangeRates;
     }
 
-    public void setExchangeRates(ExchangeInput[] exchangeRates) {
+    public void setExchangeRates(final ExchangeInput[] exchangeRates) {
         this.exchangeRates = exchangeRates;
     }
 
@@ -31,7 +31,7 @@ public final class ObjectInput {
         return commands;
     }
 
-    public void setCommands(CommandInput[] commands) {
+    public void setCommands(final CommandInput[] commands) {
         this.commands = commands;
     }
 
@@ -39,7 +39,7 @@ public final class ObjectInput {
         return commerciants;
     }
 
-    public void setCommerciants(CommerciantInput[] commerciants) {
+    public void setCommerciants(final CommerciantInput[] commerciants) {
         this.commerciants = commerciants;
     }
 }

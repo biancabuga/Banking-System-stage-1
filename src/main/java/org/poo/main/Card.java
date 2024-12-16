@@ -3,7 +3,7 @@ package org.poo.main;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-public final class Card implements JsonOutput{
+public final class Card implements JsonOutput {
     private String cardNUmber;
     private String status;
     private int isBlocked = 0;
@@ -13,7 +13,7 @@ public final class Card implements JsonOutput{
         return typeOfCard;
     }
 
-    public void setTypeOfCard(String typeOfCard) {
+    public void setTypeOfCard(final String typeOfCard) {
         this.typeOfCard = typeOfCard;
     }
 
@@ -21,11 +21,12 @@ public final class Card implements JsonOutput{
         return isBlocked;
     }
 
-    public void setIsBlocked(int isBlocked) {
+    public void setIsBlocked(final int isBlocked) {
         this.isBlocked = isBlocked;
     }
 
-    public Card(String cardNUmber, String status, String typeOfCard) {
+    public Card(final String cardNUmber,
+                final String status, final String typeOfCard) {
         this.cardNUmber = cardNUmber;
         this.status = status;
         this.typeOfCard = typeOfCard;
@@ -35,7 +36,7 @@ public final class Card implements JsonOutput{
         return cardNUmber;
     }
 
-    public void setCardNUmber(String cardNUmber) {
+    public void setCardNUmber(final String cardNUmber) {
         this.cardNUmber = cardNUmber;
     }
 
@@ -43,10 +44,14 @@ public final class Card implements JsonOutput{
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
+    /**
+     * metoda pentru afisare
+     * @return
+     */
     @Override
     public ObjectNode toJson() {
         ObjectMapper mapper = new ObjectMapper();

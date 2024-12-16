@@ -115,7 +115,7 @@ public final class Main {
             }
         }
 
-        // Procesarea comenzilor
+
         for (CommandInput command : inputData.getCommands()) {
             switch (command.getCommand()) {
                 case "printUsers" -> {
@@ -123,9 +123,9 @@ public final class Main {
                     commandOutput.put("command", "printUsers");
                     ArrayNode usersOutput = objectMapper.createArrayNode();
                     for (User user : users) {
-                        for(Account account : user.getAccounts()) {
-                            for(Card card : account.getCards()) {
-                                if(card.getIsBlocked() == 1) {
+                        for (Account account : user.getAccounts()) {
+                            for (Card card : account.getCards()) {
+                                if (card.getIsBlocked() == 1) {
                                     card.setStatus("frozen");
                                 } else {
                                     card.setStatus("active");
@@ -153,45 +153,66 @@ public final class Main {
                                     // Creăm manual nodul JSON pentru tranzacție
                                     ObjectNode transactionNode = objectMapper.createObjectNode();
                                     transactionNode.put("timestamp", transaction.getTimestamp());
-                                    transactionNode.put("description", transaction.getDescription());
+                                    transactionNode.put("description",
+                                            transaction.getDescription());
                                     if (transaction.getTransferType().equals("card_deletion")) {
                                         transactionNode.put("account", transaction.getAccount());
-                                        transactionNode.put("card", transaction.getCardNumber());
-                                        transactionNode.put("cardHolder", transaction.getCardHolder());
-                                    } else if(transaction.getTransferType().equals("card_creation")) {
-                                        transactionNode.put("account", transaction.getAccount());
-                                        transactionNode.put("card", transaction.getCardNumber());
-                                        transactionNode.put("cardHolder", transaction.getCardHolder());
-                                    } else if(transaction.getTransferType().equals("online_payment")) {
-                                        transactionNode.put("commerciant", transaction.getCommerciant());
-                                        transactionNode.put("amount", transaction.getAmountToPay());
-                                    } else if(transaction.getTransferType().equals("one_time_card_creation")) {
-                                        transactionNode.put("account", transaction.getAccount());
-                                        transactionNode.put("card", transaction.getCardNumber());
-                                        transactionNode.put("cardHolder", transaction.getCardHolder());
-                                    } else if(transaction.getTransferType().equals("split_payment")) {
-                                        transactionNode.put("amount", transaction.getAmountToPay());
-                                        transactionNode.put("currency", transaction.getCurrency());
+                                        transactionNode.put("card",
+                                                transaction.getCardNumber());
+                                        transactionNode.put("cardHolder",
+                                                transaction.getCardHolder());
+                                    } else if (transaction.
+                                            getTransferType().equals("card_creation")) {
+                                        transactionNode.put("account",
+                                                transaction.getAccount());
+                                        transactionNode.put("card",
+                                                transaction.getCardNumber());
+                                        transactionNode.put("cardHolder",
+                                                transaction.getCardHolder());
+                                    } else if (transaction.getTransferType().
+                                            equals("online_payment")) {
+                                        transactionNode.put("commerciant",
+                                                transaction.getCommerciant());
+                                        transactionNode.put("amount",
+                                                transaction.getAmountToPay());
+                                    } else if (transaction.getTransferType().
+                                            equals("one_time_card_creation")) {
+                                        transactionNode.put("account",
+                                                transaction.getAccount());
+                                        transactionNode.put("card",
+                                                transaction.getCardNumber());
+                                        transactionNode.put("cardHolder",
+                                                transaction.getCardHolder());
+                                    } else if (transaction.getTransferType().
+                                            equals("split_payment")) {
+                                        transactionNode.put("amount",
+                                                transaction.getAmountToPay());
+                                        transactionNode.put("currency",
+                                                transaction.getCurrency());
                                         ArrayNode involvedAccounts = objectMapper.createArrayNode();
                                         for (String iban : transaction.getAccountsToSplit()) {
                                             involvedAccounts.add(iban);
                                         }
                                         transactionNode.set("involvedAccounts", involvedAccounts);
-                                    } else if(transaction.getTransferType().equals("changeInterestRate")) {
+                                    } else if (transaction.getTransferType().
+                                            equals("changeInterestRate")) {
                                         break;
-                                    }
-                                    else if(transaction.getTransferType().equals("sent")){
+                                    } else if (transaction.getTransferType().equals("sent")) {
                                         if (transaction.getSenderIBAN() != null) {
-                                            transactionNode.put("senderIBAN", transaction.getSenderIBAN());
+                                            transactionNode.put("senderIBAN",
+                                                    transaction.getSenderIBAN());
                                         }
                                         if (transaction.getReceiverIBAN() != null) {
-                                            transactionNode.put("receiverIBAN", transaction.getReceiverIBAN());
+                                            transactionNode.put("receiverIBAN",
+                                                    transaction.getReceiverIBAN());
                                         }
                                         if (transaction.getAmount() != null) {
-                                            transactionNode.put("amount", transaction.getAmount());
+                                            transactionNode.put("amount",
+                                                    transaction.getAmount());
                                         }
                                         if (transaction.getTransferType() != null) {
-                                            transactionNode.put("transferType", transaction.getTransferType());
+                                            transactionNode.put("transferType",
+                                                    transaction.getTransferType());
                                         }
 
                                         // Adăugăm tranzacția la output
@@ -205,7 +226,8 @@ public final class Main {
 
                     // Adăugăm output-ul tranzacțiilor în răspunsul final
                     commandOutput.set("output", transactionsOutput);
-                    commandOutput.put("timestamp", command.getTimestamp());
+                    commandOutput.put("timestamp",
+                            command.getTimestamp());
                     output.add(commandOutput);
                 }
 
@@ -216,7 +238,8 @@ public final class Main {
                             String generatedIBAN;
                             do {
                                 generatedIBAN = Utils.generateIBAN();
-                            } while (!(generatedIBAN.startsWith("RO") && generatedIBAN.length() == 24));
+                            } while (!(generatedIBAN.startsWith("RO")
+                                    && generatedIBAN.length() == 24));
                             // Creăm contul
                             Account newAccount = AccountFactory.createAccount(
                                     generatedIBAN,
@@ -228,7 +251,8 @@ public final class Main {
 
 
                             // Adăugăm contul în lista utilizatorului
-                            FakeTransaction fakeTransaction = new FakeTransaction("New account created", command.getTimestamp());
+                            FakeTransaction fakeTransaction = new FakeTransaction(
+                                    "New account created", command.getTimestamp());
                             newAccount.addFakeTransaction(fakeTransaction);
                             user.addAccount(newAccount);
                             user.setTimestamp(command.getTimestamp());
@@ -244,7 +268,8 @@ public final class Main {
                                 // Adăugăm suma specificată în soldul contului
                                 account.setBalance(account.getBalance() + command.getAmount());
 
-                                // Adăugăm această tranzacție în lista de tranzacții a contului (dacă există tranzacții)
+                                // Adăugăm această tranzacție în lista de tranzacții a
+                                // contului (dacă există tranzacții)
 
                             }
                         }
@@ -295,7 +320,8 @@ public final class Main {
                                     // Creăm cardul de tip "one time"
                                     Card newCard = new Card(
                                             generatedCardNumber,
-                                            "active", "one_time" // Statusul specific pentru acest tip de card
+                                            "active", "one_time"
+                                            // Statusul specific pentru acest tip de card
                                     );
                                     // Adăugăm cardul în lista de carduri a contului
                                     account.addCard(newCard);
@@ -344,7 +370,9 @@ public final class Main {
                     if (accountDeleted) {
                         outputNode.put("success", "Account deleted");
                     } else {
-                        outputNode.put("error", "Account couldn't be deleted - see org.poo.transactions for details");
+                        outputNode.put("error", "Account couldn't be"
+                                +
+                                " deleted - see org.poo.transactions for details");
                     }
                     outputNode.put("timestamp", command.getTimestamp());
                     commandOutput.set("output", outputNode);
@@ -405,18 +433,26 @@ public final class Main {
                                     cardFound = true;
 
                                     // Verificăm condițiile de balanță
-                                    double balanceDifference = account.getBalance() - account.getMinBalance();
+                                    double balanceDifference = account.getBalance()
+                                            - account.getMinBalance();
 
                                     if (account.getBalance() <= account.getMinBalance()) {
                                         // Blocăm cardul dacă balanța este sub minim
                                         card.setStatus("frozen");
                                         card.setIsBlocked(1);
-                                        Transaction transaction = new Transaction(command.getTimestamp(), "You have reached the minimum amount of funds, the card will be frozen", "frozen card");
+                                        Transaction transaction = new Transaction(
+                                                command.getTimestamp(),
+                                                "You have reached the minimum "
+                                                        +
+                                                        "amount of funds, "
+                                                        +
+                                                        "the card will be frozen",
+                                                "frozen card");
                                         account.addTransaction(transaction);
                                     } else if (balanceDifference <= 30) {
                                         // Schimbăm statusul în warning dacă diferența e <= 30
                                         card.setStatus("warning");
-                                    } else if(account.getBalance() > account.getMinBalance()){
+                                    } else if (account.getBalance() > account.getMinBalance()) {
                                         // Cardul rămâne activ
                                         card.setStatus("active");
                                     }
@@ -440,6 +476,9 @@ public final class Main {
                     }
                 }
                 case "payOnline" -> {
+                    /**
+                     * comanda pentru plati online
+                     */
                     boolean transactionSuccessful = false;
                     boolean cardFound = false;
 
@@ -449,17 +488,23 @@ public final class Main {
                             for (Account account : user.getAccounts()) {
                                 for (Card card : account.getCards()) {
                                     // Verificăm dacă cardul corespunde și este activ
-                                    if(card.getCardNUmber().equals(command.getCardNumber()) && card.getIsBlocked() == 1) {
-                                        Transaction transaction = new Transaction(command.getTimestamp(), "The card is frozen", "frozen card");
+                                    if (card.getCardNUmber().equals(command.getCardNumber())
+                                            && card.getIsBlocked() == 1) {
+                                        Transaction transaction = new Transaction(
+                                                command.getTimestamp(), "The card is frozen",
+                                                "frozen card");
                                         account.addTransaction(transaction);
                                         transactionSuccessful = false;
                                         cardFound = true;
                                         break;
-                                    }else if (card.getCardNUmber().equals(command.getCardNumber()) && card.getStatus().equals("active")) {
+                                    } else if (card.getCardNUmber().equals(
+                                            command.getCardNumber()) && card.
+                                            getStatus().equals("active")) {
                                         cardFound = true;
                                         double convertedAmount = command.getAmount();
                                         if (!account.getCurrency().equals(command.getCurrency())) {
-                                            convertedAmount = Converter.getInstance().convertCurrency(
+                                            convertedAmount = Converter.getInstance().
+                                                    convertCurrency(
                                                     command.getAmount(),
                                                     command.getCurrency(),
                                                     account.getCurrency(),
@@ -467,13 +512,15 @@ public final class Main {
                                             );
                                         }
                                         if (account.getBalance() >= convertedAmount) {
-                                            account.setBalance(account.getBalance() - convertedAmount);
+                                            account.setBalance(account.getBalance()
+                                                    - convertedAmount);
 
                                             if (card.getTypeOfCard().equals("one_time")) {
                                                 account.getCards().remove(card);
                                                 // Generăm un nou card de tip OneTimeCard
                                                 String newCardNumber = Utils.generateCardNumber();
-                                                Card newCard = new Card(newCardNumber, "active", "one_time");
+                                                Card newCard = new Card(newCardNumber, "active",
+                                                        "one_time");
                                                 account.addCard(newCard);
 
                                                 // Înregistrăm tranzacția pentru noul card
@@ -498,7 +545,9 @@ public final class Main {
                                                 transactionSuccessful = true;
                                             }
                                         } else {
-                                            Transaction transaction = new Transaction(command.getTimestamp(), "Insufficient funds", "not enough money");
+                                            Transaction transaction = new Transaction(
+                                                    command.getTimestamp(), "Insufficient funds",
+                                                    "not enough money");
                                             account.addTransaction(transaction);
                                             transactionSuccessful = false;
                                         }
@@ -513,7 +562,7 @@ public final class Main {
                         ObjectNode commandOutput = objectMapper.createObjectNode();
                         commandOutput.put("command", "payOnline");
                         ObjectNode outputNode = objectMapper.createObjectNode();
-                        if(!cardFound) {
+                        if (!cardFound) {
                             outputNode.put("timestamp", command.getTimestamp());
                             commandOutput.set("output", outputNode);
                             commandOutput.put("timestamp", command.getTimestamp());
@@ -537,7 +586,9 @@ public final class Main {
                                 break;
                             }
                         }
-                        if (senderFound) break;
+                        if (senderFound) {
+                            break;
+                        }
                     }
 
                     // Găsim contul destinatar
@@ -549,7 +600,9 @@ public final class Main {
                                 break;
                             }
                         }
-                        if (receiverFound) break;
+                        if (receiverFound) {
+                            break;
+                        }
                     }
 
                     // Verificăm dacă expeditorul și destinatarul există
@@ -559,7 +612,9 @@ public final class Main {
 
                     // Verificăm dacă expeditorul are suficiente fonduri
                     if (senderAccount.getBalance() < command.getAmount()) {
-                        Transaction transaction = new Transaction(command.getTimestamp(), "Insufficient funds", "not_enough");
+                        Transaction transaction = new Transaction(
+                                command.getTimestamp(), "Insufficient funds",
+                                "not_enough");
                         senderAccount.addTransaction(transaction);
                         break;
                     }
@@ -571,7 +626,8 @@ public final class Main {
                                 command.getAmount(),
                                 senderAccount.getCurrency(),
                                 receiverAccount.getCurrency(),
-                                Arrays.asList(inputData.getExchangeRates()) // Conversia array-ului în listă
+                                Arrays.asList(inputData.getExchangeRates())
+                                // Conversia array-ului în listă
                         );
                     }
 
@@ -618,11 +674,13 @@ public final class Main {
                         }
                     }
                 } case "changeInterestRate" -> {
-                    for(User user : users) {
-                        for(Account account : user.getAccounts()) {
-                            if(account.getIBAN().equals(command.getAccount())) {
+                    for (User user : users) {
+                        for (Account account : user.getAccounts()) {
+                            if (account.getIBAN().equals(command.getAccount())) {
                                 account.setInterestRate(command.getInterestRate());
-                                Transaction transaction = new Transaction(command.getTimestamp(), "", "changeInterestRate");
+                                Transaction transaction = new Transaction(
+                                        command.getTimestamp(), "",
+                                        "changeInterestRate");
                                 account.addTransaction(transaction);
                             }
                         }
@@ -631,30 +689,33 @@ public final class Main {
                 } case "splitPayment" -> {
                     boolean allAcountsValid = true;
                     boolean sufficientFunds = true;
-                    double amountPerAccount = command.getAmount()/command.getAccounts().size();
+                    double amountPerAccount = command.getAmount() / command.getAccounts().size();
                     double aux = amountPerAccount;
-                    for(String iban : command.getAccounts()) {
+                    for (String iban : command.getAccounts()) {
                         boolean accountFound = false;
-                        for(User user : users) {
+                        for (User user : users) {
                             for (Account account : user.getAccounts()) {
-                                if(account.getIBAN().equals(iban)) {
+                                if (account.getIBAN().equals(iban)) {
                                     accountFound = true;
                                     break;
                                 }
-                            } if(accountFound) break;
-                        } if(!accountFound) {
+                            } if (accountFound) {
+                                break;
+                            }
+                        } if (!accountFound) {
                             allAcountsValid = false;
                         }
                     }
-                    if(allAcountsValid) {
+                    if (allAcountsValid) {
                         ArrayNode involvedAccounts = objectMapper.createArrayNode();
-                        for(String iban : command.getAccounts()) {
-                            for(User user : users) {
-                                for(Account account : user.getAccounts()) {
-                                    if(account.getIBAN().equals(iban)) {
+                        for (String iban : command.getAccounts()) {
+                            for (User user : users) {
+                                for (Account account : user.getAccounts()) {
+                                    if (account.getIBAN().equals(iban)) {
                                         double convertedAmount;
                                         if (!account.getCurrency().equals(command.getCurrency())) {
-                                            convertedAmount = Converter.getInstance().convertCurrency(
+                                            convertedAmount = Converter.getInstance().
+                                                    convertCurrency(
                                                     amountPerAccount,
                                                     command.getCurrency(),
                                                     account.getCurrency(),
@@ -665,7 +726,15 @@ public final class Main {
                                         }
                                         account.setBalance(account.getBalance() - convertedAmount);
                                         involvedAccounts.add(iban);
-                                        Transaction transaction = new Transaction(command.getTimestamp(),  String.format("Split payment of %.2f %s", command.getAmount(), command.getCurrency()), command.getAccounts(), command.getCurrency(), amountPerAccount, "split_payment");
+                                        Transaction transaction = new Transaction(
+                                                command.getTimestamp(),
+                                                String.format("Split payment of %.2f %s",
+                                                        command.getAmount(),
+                                                        command.getCurrency()),
+                                                command.getAccounts(),
+                                                command.getCurrency(),
+                                                amountPerAccount,
+                                                "split_payment");
                                         account.addTransaction(transaction);
                                     }
                                 }
@@ -674,11 +743,17 @@ public final class Main {
 
                     }
                 } case "addInterest" -> {
-                    for(User user : users) {
-                        for(Account account : user.getAccounts()) {
-                            if(account.getIBAN().equals(command.getAccount()) && account.getType().equals("savings")) {
-                                account.setBalance(account.getBalance() + account.getInterestRate());
-                                Transaction transaction = new Transaction(command.getTimestamp(), "", "addInterest");
+                    for (User user : users) {
+                        for (Account account : user.getAccounts()) {
+                            if (account.getIBAN().equals(command.getAccount())
+                                    &&
+                                    account.getType().equals("savings")) {
+                                account.setBalance(account.getBalance()
+                                        +
+                                        account.getInterestRate());
+                                Transaction transaction = new Transaction(
+                                        command.getTimestamp(), "",
+                                        "addInterest");
                                 account.addTransaction(transaction);
                             }
                         }
@@ -693,7 +768,9 @@ public final class Main {
                                 break;
                             }
                         }
-                        if (targetAccount != null) break;
+                        if (targetAccount != null) {
+                            break;
+                        }
                     }
 
                     ObjectNode commandOutput = objectMapper.createObjectNode();
@@ -713,40 +790,75 @@ public final class Main {
 
                         ArrayNode transactionsOutput = objectMapper.createArrayNode();
 
-                        for(FakeTransaction fakeTransaction : targetAccount.getFakeTransactions()){
-                            if(fakeTransaction.getTimestamp() >= command.getStartTimestamp()
-                                    && fakeTransaction.getTimestamp() <= command.getEndTimestamp()) {
+                        for (FakeTransaction fakeTransaction
+                                :
+                                targetAccount.getFakeTransactions()) {
+                            if (fakeTransaction.getTimestamp()
+                                    >=
+                                    command.getStartTimestamp()
+                                    &&
+                                    fakeTransaction.getTimestamp()
+                                            <=
+                                    command.getEndTimestamp()) {
                                 ObjectNode fakeTransactionNode = objectMapper.createObjectNode();
-                                fakeTransactionNode.put("timestamp", fakeTransaction.getTimestamp());
-                                fakeTransactionNode.put("description", fakeTransaction.getDescription());
+                                fakeTransactionNode.put("timestamp",
+                                        fakeTransaction.getTimestamp());
+                                fakeTransactionNode.put("description",
+                                        fakeTransaction.getDescription());
                                 transactionsOutput.add(fakeTransactionNode);
                             }
                         }
 
                         for (Transaction transaction : targetAccount.getTransactions()) {
-                            if (transaction.getTimestamp() >= command.getStartTimestamp()
-                                    && transaction.getTimestamp() <= command.getEndTimestamp()) {
+                            if (transaction.getTimestamp()
+                                    >=
+                                    command.getStartTimestamp()
+                                    &&
+                                    transaction.getTimestamp()
+                                            <=
+                                            command.getEndTimestamp()) {
                                 // Add only relevant transactions for savings accounts
-                                if (targetAccount.getType().equals("savings") && (!transaction.getTransferType().equals("addInterest") || !(transaction.getTransferType().equals("changeInterestRate")))) {
+                                if (targetAccount.getType().equals("savings")
+                                        &&
+                                        (!transaction.getTransferType().
+                                                equals("addInterest")
+                                                ||
+                                                !(transaction.getTransferType().
+                                                        equals("changeInterestRate")))) {
                                     continue;
                                 }
 
                                 ObjectNode transactionNode = objectMapper.createObjectNode();
-                                transactionNode.put("timestamp", transaction.getTimestamp());
-                                transactionNode.put("description", transaction.getDescription());
-                                if(transaction.getTransferType().equals("online_payment")) {
-                                    transactionNode.put("commerciant", transaction.getCommerciant());
-                                    transactionNode.put("amount", transaction.getAmountToPay());
-                                } else if(transaction.getTransferType().equals("card_creation")) {
-                                    transactionNode.put("account", transaction.getAccount());
-                                    transactionNode.put("card", transaction.getCardNumber());
-                                    transactionNode.put("cardHolder", transaction.getCardHolder());
-                                } else if(transaction.getTransferType().equals("sent")) {
-                                    transactionNode.put("amount", transaction.getAmount());
-                                    transactionNode.put("description", transaction.getDescription());
-                                    transactionNode.put("receiverIBAN", transaction.getReceiverIBAN());
-                                    transactionNode.put("senderIBAN", transaction.getSenderIBAN());
-                                    transactionNode.put("transferType", transaction.getTransferType());
+                                transactionNode.put("timestamp",
+                                        transaction.getTimestamp());
+                                transactionNode.put("description",
+                                        transaction.getDescription());
+                                if (transaction.getTransferType().
+                                        equals("online_payment")) {
+                                    transactionNode.put("commerciant",
+                                            transaction.getCommerciant());
+                                    transactionNode.put("amount",
+                                            transaction.getAmountToPay());
+                                } else if (transaction.getTransferType().
+                                        equals("card_creation")) {
+                                    transactionNode.put("account",
+                                            transaction.getAccount());
+                                    transactionNode.put("card",
+                                            transaction.getCardNumber());
+                                    transactionNode.put("cardHolder",
+                                            transaction.getCardHolder());
+                                } else if (transaction.getTransferType().
+                                        equals("sent")) {
+                                    transactionNode.put("amount",
+                                            transaction.getAmount());
+                                    transactionNode.put("description",
+                                            transaction.getDescription());
+                                    transactionNode.put("receiverIBAN",
+                                            transaction.getReceiverIBAN());
+                                    transactionNode.put("senderIBAN",
+                                            transaction.getSenderIBAN());
+                                    transactionNode.put("transferType",
+                                            transaction.getTransferType());
                                 }
                                 transactionsOutput.add(transactionNode);
                             }
@@ -771,7 +883,9 @@ public final class Main {
                                 break;
                             }
                         }
-                        if (targetAccount != null) break;
+                        if (targetAccount != null) {
+                            break;
+                        }
                     }
 
                     if (targetAccount == null) {
@@ -791,13 +905,17 @@ public final class Main {
                         ArrayNode transactionsOutput = objectMapper.createArrayNode();
 
                         for (Transaction transaction : targetAccount.getTransactions()) {
-                            if (transaction.getTransferType().equals("online_payment") &&
-                                    transaction.getTimestamp() >= command.getStartTimestamp() &&
+                            if (transaction.getTransferType().equals("online_payment")
+                                    &&
+                                    transaction.getTimestamp() >= command.getStartTimestamp()
+                                    &&
                                     transaction.getTimestamp() <= command.getEndTimestamp()) {
 
                                 // Adaugă la totalul comerciantului
                                 merchantSpendings.put(transaction.getCommerciant(),
-                                        merchantSpendings.getOrDefault(transaction.getCommerciant(), 0.0) + transaction.getAmountToPay());
+                                        merchantSpendings.getOrDefault(
+                                                transaction.getCommerciant(),
+                                                0.0) + transaction.getAmountToPay());
 
                                 // Adaugă tranzacția în secțiunea de tranzacții
                                 ObjectNode transactionNode = objectMapper.createObjectNode();
