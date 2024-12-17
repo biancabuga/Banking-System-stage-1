@@ -350,8 +350,8 @@ public final class Main {
                                     Transaction transaction = new Transaction(
                                             command.getTimestamp(),
                                             "New card created",
-                                            account.getIBAN(), generatedCardNumber,
-                                            auxEmail,
+                                            command.getAccount(), generatedCardNumber,
+                                            command.getEmail(),
                                             "one_time_card_creation", "1"
                                     );
                                     account.addTransaction(transaction);
@@ -791,7 +791,19 @@ public final class Main {
                         for (User user : users) {
                             for (Account account : user.getAccounts()) {
                                 if(account.getIBAN().equals(iban)) {
-                                    if (account.getBalance() < amountPerAccount) {
+                                    double convertedAmount;
+                                    if (!account.getCurrency().equals(command.getCurrency())) {
+                                        convertedAmount = Converter.getInstance().
+                                                convert(
+                                                        amountPerAccount,
+                                                        command.getCurrency(),
+                                                        account.getCurrency(),
+                                                        Arrays.asList(inputData.getExchangeRates())
+                                                );
+                                        if(account.getBalance() < convertedAmount) {
+                                            poorAccount = iban;
+                                        }
+                                    }else if (account.getBalance() < amountPerAccount) {
                                         poorAccount = iban;
                                     }
                                 }
@@ -978,6 +990,13 @@ public final class Main {
                                         involvedAccounts.add(iban);
                                     }
                                     transactionNode.set("involvedAccounts", involvedAccounts);
+                                } else if (transaction.getTransferType().equals("one_time_card_creation")) {
+                                    transactionNode.put("account",
+                                            transaction.getAccount());
+                                    transactionNode.put("card",
+                                            transaction.getCardNumber());
+                                    transactionNode.put("cardHolder",
+                                            transaction.getCardHolder());
                                 }
                                 transactionsOutput.add(transactionNode);
                             }
