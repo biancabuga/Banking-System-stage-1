@@ -3,6 +3,8 @@ package org.poo.main;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
+import java.util.Comparator;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -81,6 +83,12 @@ public final class Account {
      * metoda pentru afisare
      * @return
      */
+
+    public void sortTransactionsByTimestamp() {
+        transactions.sort(Comparator.comparingInt(Transaction::getTimestamp));
+    }
+
+
     public ObjectNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode accountNode = mapper.createObjectNode();

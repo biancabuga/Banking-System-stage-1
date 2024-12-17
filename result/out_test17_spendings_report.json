@@ -151,7 +151,7 @@
       "total" : 1457.4
     }, {
       "commerciant" : "H&M",
-      "total" : 1264.2000000000003
+      "total" : 1264.2
     }, {
       "commerciant" : "Zara Home",
       "total" : 1218.0
@@ -177,7 +177,7 @@
     }, {
       "timestamp" : 26,
       "description" : "Card payment",
-      "amount" : 1264.2000000000003,
+      "amount" : 1264.2,
       "commerciant" : "H&M"
     } ]
   },

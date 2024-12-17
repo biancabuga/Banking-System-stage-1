@@ -28,7 +28,7 @@
     "email" : "Georgeta_Nistor@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2026.5499999999997,
+      "balance" : 2026.55,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -39,7 +39,7 @@
     "email" : "Emanoil_Barbu@hotmail.ro",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 2128.5499999999997,
+      "balance" : 2128.55,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -83,7 +83,7 @@
     "email" : "Georgeta_Nistor@outlook.ro",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : 2811.5499999999997,
+      "balance" : 2811.55,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -94,7 +94,7 @@
     "email" : "Emanoil_Barbu@hotmail.ro",
     "accounts" : [ {
       "IBAN" : "RO65POOB8944016386845896",
-      "balance" : 2865.5499999999997,
+      "balance" : 2865.55,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ ]
@@ -104,8 +104,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 1
+    "timestamp" : 1,
+    "description" : "New account created"
   }, {
     "timestamp" : 9,
     "description" : "Split payment of 1269.00 EUR",

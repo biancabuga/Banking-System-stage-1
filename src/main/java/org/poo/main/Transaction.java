@@ -19,6 +19,15 @@ public class Transaction implements JsonOutput {
     private String commerciant;
     private String currency;
     private List<String> accountsToSplit;
+    private String error;
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
 
     public final List<String> getAccountsToSplit() {
         /**
@@ -215,6 +224,19 @@ public class Transaction implements JsonOutput {
         this.currency = currency;
         this.amountToPay = amountToPay;
         this.transferType = transferType;
+    }
+
+    public Transaction(final int timestamp, final String description,
+                       final List<String> accountsForSplit,
+                       final String currency, final double amountToPay,
+                       final String transferType, final String error) {
+        this.timestamp = timestamp;
+        this.description = description;
+        this.accountsToSplit = accountsForSplit;
+        this.currency = currency;
+        this.amountToPay = amountToPay;
+        this.transferType = transferType;
+        this.error = error;
     }
 
     @Override

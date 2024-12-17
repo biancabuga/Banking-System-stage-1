@@ -284,7 +284,7 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO01POOB3925326637526572",
-      "balance" : 1499.7272727272725,
+      "balance" : 1499.7272727272727,
       "currency" : "EUR",
       "type" : "savings",
       "cards" : [ ]
@@ -352,7 +352,7 @@
       "cards" : [ ]
     }, {
       "IBAN" : "RO49POOB4985907300499418",
-      "balance" : 2951.454545454545,
+      "balance" : 2951.4545454545455,
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ ]
@@ -430,8 +430,11 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 26
+    "timestamp" : 1,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 26,
+    "description" : "New account created"
   }, {
     "timestamp" : 251,
     "description" : "Electricity and water bills",
@@ -484,14 +487,25 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 27
+    "timestamp" : 2,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 27,
+    "description" : "New account created"
   }, {
     "timestamp" : 251,
-    "description" : "Electricity and water bills"
+    "description" : "Electricity and water bills",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "1726.0 CHF",
+    "transferType" : "received"
   }, {
     "timestamp" : 254,
-    "description" : "Weekly shopping from Coop"
+    "description" : "Weekly shopping from Coop",
+    "senderIBAN" : "RO58POOB7344468893732422",
+    "receiverIBAN" : "RO69POOB6209498372540635",
+    "amount" : "717.0 CHF",
+    "transferType" : "received"
   }, {
     "timestamp" : 256,
     "description" : "Medical checkup at a private clinic",
@@ -544,8 +558,11 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 50
+    "timestamp" : 25,
+    "description" : "New account created"
+  }, {
+    "timestamp" : 50,
+    "description" : "New account created"
   }, {
     "timestamp" : 370,
     "description" : "Split payment of 68481.00 EUR",
@@ -1037,7 +1054,7 @@
       } ]
     }, {
       "IBAN" : "RO49POOB4985907300499418",
-      "balance" : -2353.6454545454544,
+      "balance" : -2353.6454545454535,
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
@@ -1156,10 +1173,18 @@
     "currency" : "CHF",
     "transactions" : [ {
       "timestamp" : 251,
-      "description" : "Electricity and water bills"
+      "description" : "Electricity and water bills",
+      "amount" : "1726.0 CHF",
+      "receiverIBAN" : "RO69POOB6209498372540635",
+      "senderIBAN" : "RO58POOB7344468893732422",
+      "transferType" : "received"
     }, {
       "timestamp" : 254,
-      "description" : "Weekly shopping from Coop"
+      "description" : "Weekly shopping from Coop",
+      "amount" : "717.0 CHF",
+      "receiverIBAN" : "RO69POOB6209498372540635",
+      "senderIBAN" : "RO58POOB7344468893732422",
+      "transferType" : "received"
     }, {
       "timestamp" : 256,
       "description" : "Medical checkup at a private clinic",
@@ -1315,7 +1340,7 @@
     "email" : "Victoria_Rice@icloud.ch",
     "accounts" : [ {
       "IBAN" : "RO90POOB5450777208072365",
-      "balance" : -410.98,
+      "balance" : 1123.02,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -1416,7 +1441,7 @@
       } ]
     }, {
       "IBAN" : "RO75POOB8279679254660818",
-      "balance" : 1469.0080303030309,
+      "balance" : 1854.3080303030308,
       "currency" : "EUR",
       "type" : "savings",
       "cards" : [ {
@@ -1430,7 +1455,7 @@
     "email" : "Liam_Guthrie@hushmail.nz",
     "accounts" : [ {
       "IBAN" : "RO19POOB4981055641668812",
-      "balance" : 51445.098989898994,
+      "balance" : 54688.65454545455,
       "currency" : "NZD",
       "type" : "classic",
       "cards" : [ {
@@ -1439,7 +1464,7 @@
       } ]
     }, {
       "IBAN" : "RO37POOB8653914479106806",
-      "balance" : 15375.665454545455,
+      "balance" : 15375.665454545453,
       "currency" : "NZD",
       "type" : "savings",
       "cards" : [ {
@@ -1476,7 +1501,7 @@
     "email" : "Roberta_Mocanu@aol.ro",
     "accounts" : [ {
       "IBAN" : "RO79POOB3616857825600958",
-      "balance" : 3462.4000000000005,
+      "balance" : 5388.900000000001,
       "currency" : "RON",
       "type" : "classic",
       "cards" : [ {
@@ -1485,7 +1510,7 @@
       } ]
     }, {
       "IBAN" : "RO40POOB2135483650246268",
-      "balance" : -3980.0545454545427,
+      "balance" : 11417.900000000001,
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
@@ -1591,7 +1616,7 @@
     "email" : "Christophe_Chopard@yahoo.ch",
     "accounts" : [ {
       "IBAN" : "RO98POOB8412955460158769",
-      "balance" : 5180.02,
+      "balance" : 6714.02,
       "currency" : "CHF",
       "type" : "classic",
       "cards" : [ {
@@ -1600,7 +1625,7 @@
       } ]
     }, {
       "IBAN" : "RO47POOB5866490978033060",
-      "balance" : 19778.25076923077,
+      "balance" : 21312.25076923077,
       "currency" : "CHF",
       "type" : "savings",
       "cards" : [ {
@@ -1623,7 +1648,7 @@
       } ]
     }, {
       "IBAN" : "RO45POOB6505529013808948",
-      "balance" : -405.1199999999999,
+      "balance" : 1419.38,
       "currency" : "EUR",
       "type" : "savings",
       "cards" : [ {
@@ -1637,7 +1662,7 @@
     "email" : "Amadeo_Bacos@zoho.it",
     "accounts" : [ {
       "IBAN" : "RO68POOB1848616931405475",
-      "balance" : 3542.375,
+      "balance" : 5366.875,
       "currency" : "EUR",
       "type" : "classic",
       "cards" : [ {
@@ -1738,7 +1763,7 @@
       } ]
     }, {
       "IBAN" : "RO49POOB4985907300499418",
-      "balance" : -552.6454545454544,
+      "balance" : -552.6454545454535,
       "currency" : "RON",
       "type" : "savings",
       "cards" : [ {
@@ -1798,7 +1823,7 @@
     "email" : "Alfred_Bell@gmail.ca",
     "accounts" : [ {
       "IBAN" : "RO50POOB3913194831046423",
-      "balance" : -745.2490909090909,
+      "balance" : 1067.66,
       "currency" : "CAD",
       "type" : "classic",
       "cards" : [ {
@@ -1846,8 +1871,16 @@
     "IBAN" : "RO58POOB7344468893732422",
     "balance" : 90769.815,
     "currency" : "CHF",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "commerciants" : [ {
+      "commerciant" : "Chipotle",
+      "total" : 18.205000000000002
+    } ],
+    "transactions" : [ {
+      "timestamp" : 424,
+      "description" : "Card payment",
+      "amount" : 18.205000000000002,
+      "commerciant" : "Chipotle"
+    } ]
   },
   "timestamp" : 643
 }, {
@@ -1872,7 +1905,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO90POOB5450777208072365",
-    "balance" : -410.98,
+    "balance" : 1123.02,
     "currency" : "CHF",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -1902,8 +1935,16 @@
     "IBAN" : "RO58POOB2721178218599590",
     "balance" : 36840.86666666666,
     "currency" : "USD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "commerciants" : [ {
+      "commerciant" : "HP",
+      "total" : 25.333333333333332
+    } ],
+    "transactions" : [ {
+      "timestamp" : 428,
+      "description" : "Card payment",
+      "amount" : 25.333333333333332,
+      "commerciant" : "HP"
+    } ]
   },
   "timestamp" : 647
 }, {
@@ -1930,7 +1971,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO19POOB4981055641668812",
-    "balance" : 51445.098989898994,
+    "balance" : 54688.65454545455,
     "currency" : "NZD",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -1950,7 +1991,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO79POOB3616857825600958",
-    "balance" : 3462.4000000000005,
+    "balance" : 5388.900000000001,
     "currency" : "RON",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -1962,8 +2003,16 @@
     "IBAN" : "RO00POOB5687892910835215",
     "balance" : 51116.8,
     "currency" : "AUD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "commerciants" : [ {
+      "commerciant" : "Dunkin'",
+      "total" : 121.5
+    } ],
+    "transactions" : [ {
+      "timestamp" : 434,
+      "description" : "Card payment",
+      "amount" : 121.5,
+      "commerciant" : "Dunkin'"
+    } ]
   },
   "timestamp" : 653
 }, {
@@ -2008,10 +2057,18 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO98POOB8412955460158769",
-    "balance" : 5180.02,
+    "balance" : 6714.02,
     "currency" : "CHF",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "commerciants" : [ {
+      "commerciant" : "Calvin Klein",
+      "total" : 456.0
+    } ],
+    "transactions" : [ {
+      "timestamp" : 438,
+      "description" : "Card payment",
+      "amount" : 456.0,
+      "commerciant" : "Calvin Klein"
+    } ]
   },
   "timestamp" : 657
 }, {
@@ -2028,7 +2085,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO68POOB1848616931405475",
-    "balance" : 3542.375,
+    "balance" : 5366.875,
     "currency" : "EUR",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -2078,8 +2135,16 @@
     "IBAN" : "RO53POOB7122855990652257",
     "balance" : 35985.3375,
     "currency" : "RON",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "commerciants" : [ {
+      "commerciant" : "Wendy's",
+      "total" : 1341.5625
+    } ],
+    "transactions" : [ {
+      "timestamp" : 444,
+      "description" : "Card payment",
+      "amount" : 1341.5625,
+      "commerciant" : "Wendy's"
+    } ]
   },
   "timestamp" : 663
 }, {
@@ -2106,7 +2171,7 @@
   "command" : "spendingsReport",
   "output" : {
     "IBAN" : "RO50POOB3913194831046423",
-    "balance" : -745.2490909090909,
+    "balance" : 1067.66,
     "currency" : "CAD",
     "commerciants" : [ ],
     "transactions" : [ ]
@@ -2125,283 +2190,151 @@
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO36POOB6500477412147025",
-    "balance" : 1510.06,
-    "currency" : "CHF",
-    "commerciants" : [ {
-      "commerciant" : "Nike",
-      "total" : 25.960000000000004
-    } ],
-    "transactions" : [ {
-      "timestamp" : 449,
-      "description" : "Card payment",
-      "amount" : 25.960000000000004,
-      "commerciant" : "Nike"
-    } ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 668
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO46POOB9051076190383154",
-    "balance" : 87959.82,
-    "currency" : "CHF",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 669
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO45POOB0388148432759748",
-    "balance" : 62725.636402116404,
-    "currency" : "CHF",
-    "commerciants" : [ {
-      "commerciant" : "Adidas",
-      "total" : 30.642857142857146
-    } ],
-    "transactions" : [ {
-      "timestamp" : 451,
-      "description" : "Card payment",
-      "amount" : 30.642857142857146,
-      "commerciant" : "Adidas"
-    } ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 670
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO52POOB6271107854467609",
-    "balance" : 53328.1125,
-    "currency" : "AUD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 671
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO98POOB7190609943699593",
-    "balance" : 1480.109090909091,
-    "currency" : "USD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 672
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO50POOB3359236199018963",
-    "balance" : 75619.47612535613,
-    "currency" : "NZD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 673
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO75POOB8279679254660818",
-    "balance" : 1469.0080303030309,
-    "currency" : "EUR",
-    "commerciants" : [ {
-      "commerciant" : "Zara",
-      "total" : 471.375
-    } ],
-    "transactions" : [ {
-      "timestamp" : 455,
-      "description" : "Card payment",
-      "amount" : 471.375,
-      "commerciant" : "Zara"
-    } ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 674
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO37POOB8653914479106806",
-    "balance" : 15375.665454545455,
-    "currency" : "NZD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 675
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO73POOB0363118755441573",
-    "balance" : 10993.02,
-    "currency" : "CHF",
-    "commerciants" : [ {
-      "commerciant" : "Calvin Klein",
-      "total" : 144.0
-    } ],
-    "transactions" : [ {
-      "timestamp" : 457,
-      "description" : "Card payment",
-      "amount" : 144.0,
-      "commerciant" : "Calvin Klein"
-    } ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 676
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO40POOB2135483650246268",
-    "balance" : -3980.0545454545427,
-    "currency" : "RON",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 677
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO75POOB1098983729823992",
-    "balance" : 2276.875757575758,
-    "currency" : "AUD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 678
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO15POOB0048706387164463",
-    "balance" : -14126.909090909092,
-    "currency" : "MXN",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 679
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO97POOB5006417983475785",
-    "balance" : 18959.51714285714,
-    "currency" : "CAD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 680
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO93POOB6760303931698665",
-    "balance" : 8830.380000000001,
-    "currency" : "EUR",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 681
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO47POOB5866490978033060",
-    "balance" : 19778.25076923077,
-    "currency" : "CHF",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 682
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO45POOB6505529013808948",
-    "balance" : -405.1199999999999,
-    "currency" : "EUR",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 683
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO01POOB3925326637526572",
-    "balance" : 101515.25227272729,
-    "currency" : "EUR",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 684
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO04POOB3492426980939341",
-    "balance" : -27313.0,
-    "currency" : "MXN",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 685
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO66POOB1088683052483887",
-    "balance" : -8503.0,
-    "currency" : "MXN",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 686
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO19POOB5993192794373940",
-    "balance" : 1151.6654545454544,
-    "currency" : "NZD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 687
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO49POOB4985907300499418",
-    "balance" : -552.6454545454544,
-    "currency" : "RON",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 688
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO69POOB2312919212921100",
-    "balance" : 3098.5214285714283,
-    "currency" : "CHF",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 689
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO24POOB6002156322256357",
-    "balance" : 1759.3000000000002,
-    "currency" : "AUD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 690
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO66POOB5231566576817248",
-    "balance" : 1651.0862626262624,
-    "currency" : "CAD",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 691
 }, {
   "command" : "spendingsReport",
   "output" : {
-    "IBAN" : "RO01POOB9893132718323396",
-    "balance" : 2998.02,
-    "currency" : "CHF",
-    "commerciants" : [ ],
-    "transactions" : [ ]
+    "error" : "This kind of report is not supported for a saving account"
   },
   "timestamp" : 692
 } ]

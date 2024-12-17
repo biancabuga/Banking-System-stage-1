@@ -56,8 +56,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 1
+    "timestamp" : 1,
+    "description" : "New account created"
   }, {
     "timestamp" : 5,
     "description" : "New card created",
@@ -79,8 +79,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 8
+    "timestamp" : 8,
+    "description" : "New account created"
   } ],
   "timestamp" : 15
 }, {
@@ -153,8 +153,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 1
+    "timestamp" : 1,
+    "description" : "New account created"
   }, {
     "timestamp" : 5,
     "description" : "New card created",
@@ -201,8 +201,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 1
+    "timestamp" : 1,
+    "description" : "New account created"
   }, {
     "timestamp" : 5,
     "description" : "New card created",
@@ -266,8 +266,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 35
+    "timestamp" : 35,
+    "description" : "New account created"
   }, {
     "timestamp" : 40,
     "description" : "Insufficient funds"
@@ -368,8 +368,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 36
+    "timestamp" : 36,
+    "description" : "New account created"
   } ],
   "timestamp" : 52
 } ]

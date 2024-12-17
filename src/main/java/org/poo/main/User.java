@@ -13,6 +13,23 @@ public final class User implements JsonOutput {
     private ArrayList<Account> accounts;
     private int timestamp;
     private int k = 0;
+    private ArrayList<Transaction> transactions;
+
+    public ArrayList<Transaction> getTransactions() {
+        return transactions;
+    }
+
+    public void setTransactions(ArrayList<Transaction> transactions) {
+        this.transactions = transactions;
+    }
+
+    public int getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(int timestamp) {
+        this.timestamp = timestamp;
+    }
 
     // Constructor privat pentru a preveni instanțierea directă
     private User(final UserBuilder builder) {
@@ -20,7 +37,6 @@ public final class User implements JsonOutput {
         this.lastName = builder.lastName;
         this.email = builder.email;
         this.accounts = builder.accounts;
-        this.timestamp = builder.timestamp;
         this.k = builder.k;
     }
 
@@ -37,15 +53,9 @@ public final class User implements JsonOutput {
     public ArrayList<Account> getAccounts() {
         return accounts;
     }
-    public int getTimestamp() {
-        return timestamp;
-    }
+
     public int getK() {
         return k;
-    }
-
-    public void setTimestamp(final int timestamp) {
-        this.timestamp = timestamp;
     }
 
     public void setK(final int k) {
@@ -79,14 +89,28 @@ public final class User implements JsonOutput {
         accounts.add(account);
     }
 
+    public void addTransaction(final Transaction transaction) {
+        if (transactions == null) {
+            transactions = new ArrayList<>();
+        }
+        transactions.add(transaction);
+    }
+
     // Clasa Builder internă statică
     public static class UserBuilder {
         private String firstName;
         private String lastName;
         private String email;
-        private ArrayList<Account> accounts = new ArrayList<>();
         private int timestamp;
+        private ArrayList<Account> accounts = new ArrayList<>();
         private int k;
+        private ArrayList<Transaction> transactions = new ArrayList<>();
+
+
+        private final UserBuilder transactions(final ArrayList<Transaction> myTransactions) {
+            this.transactions = myTransactions;
+            return this;
+        }
 
         /**
          * metoda pentru setarea fiecarui camp

@@ -38,8 +38,8 @@
 }, {
   "command" : "printTransactions",
   "output" : [ {
-    "description" : "New account created",
-    "timestamp" : 1
+    "timestamp" : 1,
+    "description" : "New account created"
   }, {
     "timestamp" : 11,
     "description" : "Miscellaneous online expenses",
