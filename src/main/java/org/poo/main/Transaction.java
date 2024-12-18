@@ -21,11 +21,11 @@ public class Transaction implements JsonOutput {
     private List<String> accountsToSplit;
     private String error;
 
-    public String getError() {
+    public final String getError() {
         return error;
     }
 
-    public void setError(String error) {
+    public final void setError(final String error) {
         this.error = error;
     }
 

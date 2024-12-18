@@ -195,8 +195,8 @@ public final class Main {
                                                 transaction.getTimestamp());
                                         transactionNode.put("description",
                                                 transaction.getDescription());
-                                    } else if(transaction.getTransferType().
-                                            equals("split_payment_error")){
+                                    } else if (transaction.getTransferType().
+                                            equals("split_payment_error")) {
                                         transactionNode.put("amount",
                                                 transaction.getAmountToPay());
                                         transactionNode.put("currency",
@@ -381,7 +381,9 @@ public final class Main {
                                     } else {
                                         Transaction transaction = new Transaction(
                                                 command.getTimestamp(),
-                                                "Account couldn't be deleted - there are funds remaining",
+                                                "Account couldn't be deleted -"
+                                                        +
+                                                        " there are funds remaining",
                                                 "deleteAccount"
                                         );
                                         account.addTransaction(transaction);
@@ -743,7 +745,8 @@ public final class Main {
                                 if (account.getType().equals("savings")) {
                                     account.setInterestRate(command.getInterestRate());
                                     Transaction transaction = new Transaction(
-                                            command.getTimestamp(), "Interest rate of the account changed to "
+                                            command.getTimestamp(),
+                                            "Interest rate of the account changed to "
                                             +
                                             command.getInterestRate(),
                                             "changeInterestRate");
@@ -790,7 +793,7 @@ public final class Main {
                     for (String iban : command.getAccounts()) {
                         for (User user : users) {
                             for (Account account : user.getAccounts()) {
-                                if(account.getIBAN().equals(iban)) {
+                                if (account.getIBAN().equals(iban)) {
                                     double convertedAmount;
                                     if (!account.getCurrency().equals(command.getCurrency())) {
                                         convertedAmount = Converter.getInstance().
@@ -800,10 +803,10 @@ public final class Main {
                                                         account.getCurrency(),
                                                         Arrays.asList(inputData.getExchangeRates())
                                                 );
-                                        if(account.getBalance() < convertedAmount) {
+                                        if (account.getBalance() < convertedAmount) {
                                             poorAccount = iban;
                                         }
-                                    }else if (account.getBalance() < amountPerAccount) {
+                                    } else if (account.getBalance() < amountPerAccount) {
                                         poorAccount = iban;
                                     }
                                 }
@@ -831,7 +834,9 @@ public final class Main {
                                             convertedAmount = aux;
                                         }
                                             if (poorAccount == null) {
-                                                account.setBalance(account.getBalance() - convertedAmount);
+                                                account.setBalance(account.getBalance()
+                                                        -
+                                                        convertedAmount);
                                                 involvedAccounts.add(iban);
                                                 Transaction transaction = new Transaction(
                                                         command.getTimestamp(),
@@ -880,7 +885,7 @@ public final class Main {
                                 user.addTransaction(transaction);
                             } else if (account.getIBAN().equals(command.getAccount())
                                     ||
-                                    account.getType().equals("classical")){
+                                    account.getType().equals("classical")) {
                                 ObjectNode commandOutput = objectMapper.createObjectNode();
                                 commandOutput.put("command", "addInterest");
                                 ObjectNode outputNode = objectMapper.createObjectNode();
@@ -976,7 +981,7 @@ public final class Main {
                                             transaction.getSenderIBAN());
                                     transactionNode.put("transferType",
                                             transaction.getTransferType());
-                                } else if(transaction.getTransferType().
+                                } else if (transaction.getTransferType().
                                         equals("split_payment_error")) {
                                     transactionNode.put("amount",
                                             transaction.getAmountToPay());
@@ -984,12 +989,15 @@ public final class Main {
                                             transaction.getCurrency());
                                     transactionNode.put("error",
                                             "Account " + transaction.getError()
-                                                    + " has insufficient funds for a split payment.");
+                                                    +
+                                                    " has insufficient funds " +
+                                                    "for a split payment.");
                                     ArrayNode involvedAccounts = objectMapper.createArrayNode();
                                     for (String iban : transaction.getAccountsToSplit()) {
                                         involvedAccounts.add(iban);
                                     }
-                                    transactionNode.set("involvedAccounts", involvedAccounts);
+                                    transactionNode.set("involvedAccounts",
+                                            involvedAccounts);
                                 } else if (transaction.getTransferType().equals("one_time_card_creation")) {
                                     transactionNode.put("account",
                                             transaction.getAccount());
