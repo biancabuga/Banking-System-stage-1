@@ -12,14 +12,13 @@ public final class User implements JsonOutput {
     private String email;
     private ArrayList<Account> accounts;
     private int timestamp;
-    private int k = 0;
     private ArrayList<Transaction> transactions;
 
     public ArrayList<Transaction> getTransactions() {
         return transactions;
     }
 
-    public void setTransactions(ArrayList<Transaction> transactions) {
+    public void setTransactions(final ArrayList<Transaction> transactions) {
         this.transactions = transactions;
     }
 
@@ -27,7 +26,7 @@ public final class User implements JsonOutput {
         return timestamp;
     }
 
-    public void setTimestamp(int timestamp) {
+    public void setTimestamp(final int timestamp) {
         this.timestamp = timestamp;
     }
 
@@ -37,7 +36,6 @@ public final class User implements JsonOutput {
         this.lastName = builder.lastName;
         this.email = builder.email;
         this.accounts = builder.accounts;
-        this.k = builder.k;
     }
 
     // Getteri și Setteri
@@ -52,14 +50,6 @@ public final class User implements JsonOutput {
     }
     public ArrayList<Account> getAccounts() {
         return accounts;
-    }
-
-    public int getK() {
-        return k;
-    }
-
-    public void setK(final int k) {
-        this.k = k;
     }
 
     @Override
@@ -89,6 +79,10 @@ public final class User implements JsonOutput {
         accounts.add(account);
     }
 
+    /**
+     * adaugam tranzactiile user-ului
+     * @param transaction
+     */
     public void addTransaction(final Transaction transaction) {
         if (transactions == null) {
             transactions = new ArrayList<>();
@@ -103,7 +97,6 @@ public final class User implements JsonOutput {
         private String email;
         private int timestamp;
         private ArrayList<Account> accounts = new ArrayList<>();
-        private int k;
         private ArrayList<Transaction> transactions = new ArrayList<>();
 
 
@@ -160,16 +153,6 @@ public final class User implements JsonOutput {
          */
         public final UserBuilder timestamp(final int theTimestamp) {
             this.timestamp = theTimestamp;
-            return this;
-        }
-
-        /**
-         * metoda pentru setarea fiecarui camp
-         * @param theK
-         * @return
-         */
-        public final UserBuilder k(final int theK) {
-            this.k = theK;
             return this;
         }
 

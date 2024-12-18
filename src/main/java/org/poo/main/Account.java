@@ -19,15 +19,6 @@ public final class Account {
     private List<Transaction> transactions = new ArrayList<>();
     private double minBalance;
     private String alias;
-    private List<FakeTransaction> fakeTransactions = new ArrayList<>();
-
-    public List<FakeTransaction> getFakeTransactions() {
-        return fakeTransactions;
-    }
-
-    public void setFakeTransactions(final List<FakeTransaction> fakeTransactions) {
-        this.fakeTransactions = fakeTransactions;
-    }
 
     public Account(final String iban, final double balance,
                    final String currency, final String type,
@@ -88,7 +79,10 @@ public final class Account {
         transactions.sort(Comparator.comparingInt(Transaction::getTimestamp));
     }
 
-
+    /**
+     * metoda pentru afisare
+     * @return
+     */
     public ObjectNode toJson() {
         ObjectMapper mapper = new ObjectMapper();
         ObjectNode accountNode = mapper.createObjectNode();
@@ -135,16 +129,6 @@ public final class Account {
         transactions.add(transaction);
     }
 
-    /**
-     * metoda pentru a adauga o tranzactie falsa
-     * (pe care nu dorim s-o printam
-     * in PrintTransactions
-     * dar este tot o tranzactie)
-     * @param fakeTransaction
-     */
-    public void addFakeTransaction(final FakeTransaction fakeTransaction) {
-        fakeTransactions.add(fakeTransaction);
-    }
 
     public double getInterestRate() {
         return interestRate;
